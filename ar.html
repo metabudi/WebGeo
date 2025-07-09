@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AR Relief Dasar Laut</title>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+    <style>
+      body { margin: 0; font-family: sans-serif; background: #e9f4fb; }
+      header, footer { background: #0066cc; color: white; text-align: center; padding: 1rem; }
+      nav ul { display: flex; justify-content: center; list-style: none; padding: 0; background: #004c99; margin: 0; }
+      nav li { margin: 0 1rem; }
+      nav a { color: white; text-decoration: none; font-weight: bold; }
+      main { text-align: center; padding: 1rem; }
+      .info { font-style: italic; color: #003049; margin-top: 1rem; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Augmented Reality - Relief Dasar Laut</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="materi.html">Materi</a></li>
+          <li><a href="ar.html">Augmented Reality</a></li>
+          <li><a href="kuis.html">Kuis</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <a-scene
+        mindar-image="imageTargetSrc: assets/marker-relief.mind;"
+        color-space="sRGB"
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+        embedded
+      >
+        <a-assets>
+          <a-asset-item id="model" src="assets/model-relief.glb"></a-asset-item>
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <a-entity mindar-image-target="targetIndex: 0">
+          <a-gltf-model src="#model" position="0 -0.5 0" rotation="0 180 0" scale="0.5 0.5 0.5"></a-gltf-model>
+        </a-entity>
+      </a-scene>
+      <p class="info">Arahkan kamera ke gambar marker penampang dasar laut untuk melihat model 3D.</p>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 - Aplikasi WebAR Hidrosfer</p>
+    </footer>
+  </body>
+</html>
